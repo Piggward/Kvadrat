@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://dwe885d2bst08"]
+
+[ext_resource type="Script" path="res://scripts/fish.gd" id="1_28jtl"]
+[ext_resource type="Texture2D" uid="uid://cojtx42jm0gfn" path="res://art/livefish.png" id="1_cv3dr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sdsru"]
+size = Vector2(8, 3)
+
+[node name="Area2D3" type="Area2D" groups=["fish"]]
+position = Vector2(955, 349)
+collision_layer = 256
+collision_mask = 256
+script = ExtResource("1_28jtl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_sdsru")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(0.043, 0.05)
+texture = ExtResource("1_cv3dr")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -5.0
+offset_top = -3.0
+offset_right = 3.0
+scale = Vector2(1.23936, 1.75267)
+
+[connection signal="gui_input" from="Control" to="." method="_on_control_gui_input"]

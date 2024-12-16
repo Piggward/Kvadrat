@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://dbbi5qj4mvavs"]
+
+[ext_resource type="Script" path="res://scripts/round_poly.gd" id="1_b4kwk"]
+[ext_resource type="Texture2D" uid="uid://bspdkmocg6k2v" path="res://art/tophat.png" id="1_gx62q"]
+[ext_resource type="Texture2D" uid="uid://duo113pevy4mx" path="res://art/mustasch.png" id="2_g7yrb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i3qh2"]
+
+[node name="GeneralJimmy" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_i3qh2")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0.337255, 0.160784, 0.137255, 1)
+polygon = PackedVector2Array(10, -10, -9, -10, -9, 11, 10, 10)
+script = ExtResource("1_b4kwk")
+round = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -14)
+scale = Vector2(0.0527373, 0.0527373)
+texture = ExtResource("1_gx62q")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-1, 0)
+scale = Vector2(0.0324079, 0.0449735)
+texture = ExtResource("2_g7yrb")

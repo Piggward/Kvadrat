@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://67nbibro5v1o"]
+
+[ext_resource type="Script" path="res://scripts/round_poly.gd" id="1_lkxxd"]
+
+[node name="Polygon2D" type="Polygon2D"]
+color = Color(0.141176, 0.321569, 0.45098, 1)
+polygon = PackedVector2Array(-10, -10, 10, -10, 10, 10, -10, 10)
+script = ExtResource("1_lkxxd")

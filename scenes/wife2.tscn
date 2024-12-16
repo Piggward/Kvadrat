@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2pu7wmi6xgyc"]
+
+[ext_resource type="Texture2D" uid="uid://4argtyydg4jk" path="res://art/dead wife.png" id="1_namn1"]
+[ext_resource type="PackedScene" uid="uid://xikw1a0ik2tx" path="res://scenes/wife3.tscn" id="2_dms7j"]
+
+[node name="Wife" type="Sprite2D"]
+texture_filter = 1
+scale = Vector2(0.204358, 0.204358)
+texture = ExtResource("1_namn1")
+
+[node name="Polygon2D" parent="." instance=ExtResource("2_dms7j")]

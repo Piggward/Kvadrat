@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://ct60r8wj2hkji"]
+
+[ext_resource type="Script" path="res://scripts/round_poly.gd" id="1_pbtar"]
+
+[node name="Sprite2D" type="Sprite2D"]
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(370, 136, 742, 129, 721, 474, 274, 471)
+script = ExtResource("1_pbtar")
