@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="MLKvadrat"
-run/main_scene="res://scenes/level1.tscn"
+run/main_scene="res://scenes/factory.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 
 [autoload]
@@ -22,7 +22,7 @@ Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 
 directories/dch_directory={
 "General Jimmy": "res://dialogic/characters/general_jimmy.dch",
-"Guard 1": "res://dialogic/characters/Guard 1.dch",
+"Guard": "res://dialogic/characters/Guard 1.dch",
 "testcharacter1": "res://dialogic/characters/character.dch"
 }
 directories/dtl_directory={
@@ -30,6 +30,7 @@ directories/dtl_directory={
 "general_jimmy_entrance": "res://dialogic/timelines/factory/general_jimmy_entrance.dtl",
 "giraffe": "res://dialogic/timelines/factory/giraffe.dtl",
 "guard_encounter": "res://dialogic/timelines/factory/guard_encounter.dtl",
+"guard_prank": "res://dialogic/timelines/factory/guard_prank.dtl",
 "jimmy_office_dialogue": "res://dialogic/timelines/factory/jimmy_office_dialogue.dtl",
 "monkey": "res://dialogic/timelines/factory/monkey.dtl",
 "note": "res://dialogic/timelines/note.dtl",

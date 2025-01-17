@@ -63,3 +63,4 @@ func init_prank_animation(original_pos: Vector2, original_rot: float):
 	var tween2 = create_tween().set_parallel(true)
 	tween2.tween_property(guard_6, "position", Vector2(guard_6.position.x, guard_6.position.y - 20), 0.2)
 	tween2.tween_property(player, "position", Vector2(player.position.x, player.position.y - 40), 0.4)
+	start_dialogic("guard_prank")

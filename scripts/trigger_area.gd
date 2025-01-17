@@ -27,6 +27,8 @@ func _on_body_entered(body: CharacterBody2D):
 	triggered = single_trigger
 	var og_parent = body.get_parent()
 	body.reparent(self)
+	if disable_player:
+		body.process_mode = Node.PROCESS_MODE_DISABLED
 	if preAnimationTimeLine != "":
 		await play_timeline(load("res://dialogic/timelines/" + preAnimationTimeLine + ".dtl"), body)
 	if animation != "":
@@ -36,6 +38,7 @@ func _on_body_entered(body: CharacterBody2D):
 		await play_timeline(load("res://dialogic/timelines/" + postAnimationTimeLine + ".dtl"), body)
 		
 	body.reparent(og_parent)
+	body.process_mode = Node.PROCESS_MODE_INHERIT
 	pass # Replace with function body.
 
 func play_timeline(timeline, body):
