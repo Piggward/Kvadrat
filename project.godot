@@ -31,6 +31,8 @@ directories/dtl_directory={
 "giraffe": "res://dialogic/timelines/factory/giraffe.dtl",
 "guard_encounter": "res://dialogic/timelines/factory/guard_encounter.dtl",
 "guard_prank": "res://dialogic/timelines/factory/guard_prank.dtl",
+"indoor_factory_guard": "res://dialogic/timelines/factory/indoor_factory_guard.dtl",
+"indoor_guard_fish_box": "res://dialogic/timelines/factory/indoor_guard_fish_box.dtl",
 "jimmy_office_dialogue": "res://dialogic/timelines/factory/jimmy_office_dialogue.dtl",
 "monkey": "res://dialogic/timelines/factory/monkey.dtl",
 "note": "res://dialogic/timelines/note.dtl",
@@ -61,7 +63,8 @@ text/autopauses={}
 layout/style_list=["res://dialogic/style/GJ.tres", "res://dialogic/characters/Guard_style.tres", "res://dialogic/characters/Guard.tres"]
 layout/default_style="res://dialogic/style/GJ.tres"
 variables={
-"DeadFishesRemoved": 0
+"DeadFishesRemoved": 0,
+"HasSpokenWithBoss": false
 }
 text/autocolor_names=true
 
@@ -121,6 +124,11 @@ mleft={
 
 [layer_names]
 
+2d_physics/layer_1="Walls"
+2d_physics/layer_2="Player"
+2d_physics/layer_3="Npc"
+2d_physics/layer_4="DragableDetector"
+2d_physics/layer_5="DragableObject"
 2d_physics/layer_9="Fish"
 
 [rendering]

@@ -11,13 +11,15 @@ extends Node2D
 @onready var player = $Player
 @onready var camera_2d = $Player/Camera2D
 @onready var guard_6 = $Npcs/Guard6
+@onready var fish_box = $FishBox
+@onready var fish_storage = $FishStorage
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#play_fish_minigame()
-	#await get_tree().create_timer(1).timeout
-	#start_game()
+	play_fish_minigame()
+	await get_tree().create_timer(1).timeout
+	start_game()
 	Dialogic.signal_event.connect(on_dialogic_signal)
 	pass # Replace with function body.
 
@@ -63,4 +65,8 @@ func init_prank_animation(original_pos: Vector2, original_rot: float):
 	var tween2 = create_tween().set_parallel(true)
 	tween2.tween_property(guard_6, "position", Vector2(guard_6.position.x, guard_6.position.y - 20), 0.2)
 	tween2.tween_property(player, "position", Vector2(player.position.x, player.position.y - 40), 0.4)
+	tween2.tween_property(fish_box, "position", Vector2(fish_box.position.x, fish_storage.position.y), 0.4)
 	start_dialogic("guard_prank")
+	await tween2.finished
+	fish_box.queue_free()
+	Dialogic.timeline_ended.connect(func(): player.set_stinky(true))

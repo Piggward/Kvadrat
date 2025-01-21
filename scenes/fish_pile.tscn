@@ -1,76 +1,79 @@
-[gd_scene load_steps=2 format=3 uid="uid://cjpd366c8a2j6"]
+[gd_scene load_steps=3 format=3 uid="uid://cjpd366c8a2j6"]
 
-[ext_resource type="Texture2D" uid="uid://cojtx42jm0gfn" path="res://art/livefish.png" id="1_3spmi"]
+[ext_resource type="Texture2D" uid="uid://cv3h71nrxxo2v" path="res://art/deadfish.png" id="1_5rb5w"]
+[ext_resource type="PackedScene" uid="uid://dovswi5jeixo6" path="res://scenes/stink.tscn" id="2_wq81o"]
 
 [node name="FishPile" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = -0.198742
 scale = Vector2(0.176146, 0.166618)
-texture = ExtResource("1_3spmi")
+texture = ExtResource("1_5rb5w")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 position = Vector2(3, -4)
 rotation = 0.277866
 scale = Vector2(0.176146, 0.166618)
-texture = ExtResource("1_3spmi")
+texture = ExtResource("1_5rb5w")
 
 [node name="Sprite2D3" type="Sprite2D" parent="."]
 position = Vector2(-1, 6)
 rotation = -0.198742
 scale = Vector2(0.176146, 0.166618)
-texture = ExtResource("1_3spmi")
+texture = ExtResource("1_5rb5w")
 
 [node name="Sprite2D4" type="Sprite2D" parent="."]
 position = Vector2(10, 9)
 rotation = 0.277866
 scale = Vector2(0.176146, 0.166618)
-texture = ExtResource("1_3spmi")
+texture = ExtResource("1_5rb5w")
 
 [node name="Sprite2D5" type="Sprite2D" parent="."]
 position = Vector2(16, 2)
 rotation = -0.198742
 scale = Vector2(0.176146, 0.166618)
-texture = ExtResource("1_3spmi")
+texture = ExtResource("1_5rb5w")
 
 [node name="Sprite2D6" type="Sprite2D" parent="."]
 position = Vector2(9, -8)
 rotation = 0.0458194
 scale = Vector2(0.176146, 0.166618)
-texture = ExtResource("1_3spmi")
+texture = ExtResource("1_5rb5w")
 
 [node name="Sprite2D7" type="Sprite2D" parent="."]
 position = Vector2(-2, -10)
 rotation = 0.277866
 scale = Vector2(0.176146, 0.166618)
-texture = ExtResource("1_3spmi")
+texture = ExtResource("1_5rb5w")
 
 [node name="Sprite2D8" type="Sprite2D" parent="."]
 position = Vector2(-14, -5)
 rotation = 0.0458194
 scale = Vector2(0.176146, 0.166618)
-texture = ExtResource("1_3spmi")
+texture = ExtResource("1_5rb5w")
 
 [node name="Sprite2D9" type="Sprite2D" parent="."]
 position = Vector2(-14, 0)
 rotation = -2.95171
 scale = Vector2(0.176146, 0.166618)
-texture = ExtResource("1_3spmi")
+texture = ExtResource("1_5rb5w")
 
 [node name="Sprite2D10" type="Sprite2D" parent="."]
 position = Vector2(-12, 6)
 rotation = -0.785398
 scale = Vector2(0.176146, 0.166618)
-texture = ExtResource("1_3spmi")
+texture = ExtResource("1_5rb5w")
 
 [node name="Sprite2D11" type="Sprite2D" parent="."]
 position = Vector2(4, 11)
 rotation = -2.95171
 scale = Vector2(0.176146, 0.166618)
-texture = ExtResource("1_3spmi")
+texture = ExtResource("1_5rb5w")
 
 [node name="Sprite2D12" type="Sprite2D" parent="."]
 position = Vector2(15, 1)
 rotation = 2.57968
 scale = Vector2(0.176146, 0.166618)
-texture = ExtResource("1_3spmi")
+texture = ExtResource("1_5rb5w")
+
+[node name="Stink" parent="." instance=ExtResource("2_wq81o")]

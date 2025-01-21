@@ -11,3 +11,4 @@ else:
 	"General Jimmy": Simply put, only removing {DeadFishesRemoved} dead fishes in one day is just embaressing really.
 	"General Jimmy": Go home and rest Martin Luther Kvadrat. Maybe its best that you leave early today.
 "General Jimmy": Perhaps bring some flowers on your way home. Your wife will be surprised to see you home so soon.
+set {HasSpokenWithBoss} = true

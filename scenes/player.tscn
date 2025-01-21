@@ -7,9 +7,8 @@
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
-collision_mask = 3
+collision_mask = 31
 script = ExtResource("1_3et4n")
-speed = null
 
 [node name="Polygon2D" parent="." instance=ExtResource("2_3oq1p")]
 

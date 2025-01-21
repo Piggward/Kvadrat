@@ -1,0 +1,47 @@
+[gd_scene load_steps=9 format=3 uid="uid://dovswi5jeixo6"]
+
+[ext_resource type="Texture2D" uid="uid://dpotmu63wcg2e" path="res://art/smoke.png" id="1_eaac7"]
+
+[sub_resource type="Curve" id="Curve_rbofd"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_qvf0m"]
+curve = SubResource("Curve_rbofd")
+
+[sub_resource type="Curve" id="Curve_4g3mj"]
+_data = [Vector2(0.00518135, 1), 0.0, 0.0, 0, 0, Vector2(0.989637, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_h662o"]
+curve = SubResource("Curve_4g3mj")
+
+[sub_resource type="Curve" id="Curve_yeh44"]
+_data = [Vector2(0.0129534, 0.0806773), 0.0, 0.0, 0, 0, Vector2(0.878238, 0.741036), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_hrgeu"]
+curve = SubResource("Curve_yeh44")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_l2hi2"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(5, 0, 1)
+angle_min = -194.5
+angle_max = 187.7
+gravity = Vector3(0, 0, 0)
+linear_accel_min = 4.0
+linear_accel_max = 7.0
+scale_curve = SubResource("CurveTexture_hrgeu")
+color = Color(0.415686, 0.713726, 0.372549, 1)
+alpha_curve = SubResource("CurveTexture_qvf0m")
+emission_curve = SubResource("CurveTexture_h662o")
+
+[node name="Stink" type="GPUParticles2D"]
+show_behind_parent = true
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_l2hi2")
+texture = ExtResource("1_eaac7")
+lifetime = 3.0
+explosiveness = 0.16
+randomness = 0.94

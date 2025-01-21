@@ -1,0 +1,5 @@
+if {HasSpokenWithBoss} == false:
+	Guard: Hey, where are you going?
+	Guard: The boss wants to speak with you.
+else:
+	Guard: What are you waiting for? Fetch the box full of fish at the end of the conveyor.

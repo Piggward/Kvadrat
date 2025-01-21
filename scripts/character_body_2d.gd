@@ -4,6 +4,15 @@ extends CharacterBody2D
 @export var speed: int
 var dragable_object: DragableArea = null
 var dragable_offset: Vector2 = Vector2.ZERO
+const STINK = preload("res://scenes/stink.tscn")
+
+func set_stinky(value: bool):
+	if value:
+		self.add_child(STINK.instantiate())
+	else:
+		for child in get_children():
+			if child.name == "STINK":
+				child.queue_free()
 
 func _physics_process(delta):
 	# Get the input direction and handle the movement/deceleration.

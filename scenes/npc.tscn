@@ -7,8 +7,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y31rm"]
 
 [node name="Npc" type="Area2D"]
-collision_layer = 2
-collision_mask = 3
+collision_layer = 4
+collision_mask = 23
 script = ExtResource("1_5ulch")
 round = true
 random_color = true
@@ -20,8 +20,8 @@ shape = SubResource("RectangleShape2D_epac5")
 polygon = PackedVector2Array(10, 10, -10, 10, -10, -10, 10, -10)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-collision_layer = 2
-collision_mask = 2
+collision_layer = 4
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("RectangleShape2D_y31rm")

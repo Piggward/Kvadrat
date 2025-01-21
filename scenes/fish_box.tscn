@@ -1,14 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://dhopa2shi6y6y"]
+[gd_scene load_steps=5 format=3 uid="uid://dhopa2shi6y6y"]
 
 [ext_resource type="Texture2D" uid="uid://m0ajjmwk3wfq" path="res://art/box.png" id="2_7bh5o"]
 [ext_resource type="PackedScene" uid="uid://cjpd366c8a2j6" path="res://scenes/fish_pile.tscn" id="3_k65bf"]
+[ext_resource type="PackedScene" uid="uid://b42v2tqldpx6x" path="res://scenes/dragable_area.tscn" id="3_lu1an"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l8cr5"]
 size = Vector2(69, 37)
 
 [node name="FishBox" type="RigidBody2D"]
-collision_layer = 3
-collision_mask = 3
+collision_layer = 16
+collision_mask = 23
 gravity_scale = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -52,5 +53,14 @@ scale = Vector2(0.5, 0.5)
 position = Vector2(17.1428, -7.14286)
 scale = Vector2(0.5, 0.5)
 
+[node name="DragableArea" parent="." instance=ExtResource("3_lu1an")]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" parent="DragableArea" index="0"]
+position = Vector2(1.5, -0.5)
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
+
+[editable path="DragableArea"]

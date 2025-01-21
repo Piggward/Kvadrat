@@ -6,11 +6,14 @@ const LIVEFISH = preload("res://art/livefish.png")
 @onready var sprite_2d = $Sprite2D
 @export var live: bool
 var minigame_playing = true
+@onready var stink = $stink
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if live:
 		sprite_2d.texture = LIVEFISH
+		stink.queue_free()
 	else:
 		sprite_2d.texture = DEADFISH
 		sprite_2d.scale.y *= -1

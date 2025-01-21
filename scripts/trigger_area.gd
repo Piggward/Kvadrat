@@ -19,7 +19,7 @@ func _process(delta):
 	pass
 
 
-func _on_body_entered(body: CharacterBody2D):
+func _on_body_entered(body: Node2D):
 	if triggered:
 		return
 	if delay > 0:
@@ -45,5 +45,5 @@ func play_timeline(timeline, body):
 	Dialogic.start(timeline)
 	if disable_player:
 		body.process_mode = Node.PROCESS_MODE_DISABLED
-		Dialogic.timeline_ended.connect(func(): body.process_mode = Node.PROCESS_MODE_INHERIT)
-	await Dialogic.timeline_ended
+		await Dialogic.timeline_ended
+		body.process_mode = Node.PROCESS_MODE_INHERIT

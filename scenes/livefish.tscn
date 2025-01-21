@@ -1,10 +1,40 @@
-[gd_scene load_steps=4 format=3 uid="uid://dwe885d2bst08"]
+[gd_scene load_steps=10 format=3 uid="uid://dwe885d2bst08"]
 
 [ext_resource type="Script" path="res://scripts/fish.gd" id="1_28jtl"]
 [ext_resource type="Texture2D" uid="uid://cojtx42jm0gfn" path="res://art/livefish.png" id="1_cv3dr"]
+[ext_resource type="Texture2D" uid="uid://dpotmu63wcg2e" path="res://art/smoke.png" id="3_s730w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sdsru"]
 size = Vector2(8, 3)
+
+[sub_resource type="Curve" id="Curve_nu4n0"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.512953, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_qxqpi"]
+curve = SubResource("Curve_nu4n0")
+
+[sub_resource type="Curve" id="Curve_25t5v"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.99999, 0.482072), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_24u4e"]
+curve = SubResource("Curve_25t5v")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rik0t"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(3, 0, 1)
+angle_min = -194.5
+angle_max = 194.5
+gravity = Vector3(0, 0, 0)
+linear_accel_min = 1.9
+linear_accel_max = 4.27
+scale_min = 0.03
+scale_max = 0.03
+scale_curve = SubResource("CurveTexture_24u4e")
+color = Color(0.737747, 0.841173, 0, 1)
+alpha_curve = SubResource("CurveTexture_qxqpi")
 
 [node name="Area2D3" type="Area2D" groups=["fish"]]
 position = Vector2(955, 349)
@@ -28,5 +58,16 @@ offset_left = -5.0
 offset_top = -3.0
 offset_right = 3.0
 scale = Vector2(1.23936, 1.75267)
+
+[node name="stink" type="GPUParticles2D" parent="."]
+process_mode = 3
+show_behind_parent = true
+use_parent_material = true
+position = Vector2(0, -1)
+amount = 25
+process_material = SubResource("ParticleProcessMaterial_rik0t")
+texture = ExtResource("3_s730w")
+lifetime = 1.2
+local_coords = true
 
 [connection signal="gui_input" from="Control" to="." method="_on_control_gui_input"]

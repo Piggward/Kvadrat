@@ -17,7 +17,6 @@ func _process(delta):
 		cd = true
 		await Dialogic.timeline_ended
 		await get_tree().create_timer(0.2).timeout
-		print("now")
 		cd = false 
 	pass
 
