@@ -1,33 +1,28 @@
-[gd_scene load_steps=5 format=3 uid="uid://bgannvtipxti7"]
+[gd_scene load_steps=7 format=3 uid="uid://bgannvtipxti7"]
 
 [ext_resource type="Script" path="res://scripts/bicycle.gd" id="1_alri2"]
 [ext_resource type="Script" path="res://scripts/round_poly.gd" id="1_ihlao"]
+[ext_resource type="Script" path="res://scenes/bicycle_game.gd" id="1_wq730"]
+[ext_resource type="PackedScene" uid="uid://6lm0vlm52iyn" path="res://scenes/obstacle_spawn.tscn" id="3_k1n7x"]
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xhg6c"]
-particle_flag_disable_z = true
-emission_shape_scale = Vector3(1, 0, 1)
-emission_shape = 3
-emission_box_extents = Vector3(575, 0, 1)
-direction = Vector3(0, 1, 0)
-spread = 0.0
-initial_velocity_min = 267.77
-initial_velocity_max = 417.05
-scale_min = 25.0
-scale_max = 50.0
-collision_mode = 2
-collision_use_scale = true
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g0dx3"]
+size = Vector2(20, 521)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rj4al"]
 
 [node name="BicycleGame" type="Node2D"]
+script = ExtResource("1_wq730")
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-visible = false
-visibility_layer = 3
-position = Vector2(552.5, 0)
-amount = 20
-process_material = SubResource("ParticleProcessMaterial_xhg6c")
-lifetime = 5.0
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(570, 385)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-277, -58.5)
+shape = SubResource("RectangleShape2D_g0dx3")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(280, -61)
+shape = SubResource("RectangleShape2D_g0dx3")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 position = Vector2(571, 385)
@@ -39,3 +34,8 @@ random_color = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 shape = SubResource("RectangleShape2D_rj4al")
+
+[node name="ObstacleSpawn" parent="CharacterBody2D" instance=ExtResource("3_k1n7x")]
+position = Vector2(1, -312)
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]

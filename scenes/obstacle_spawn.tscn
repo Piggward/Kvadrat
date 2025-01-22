@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://6lm0vlm52iyn"]
+
+[ext_resource type="Script" path="res://scenes/obstacle_spawn.gd" id="1_a81k4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s8oxd"]
+size = Vector2(538, 20)
+
+[node name="ObstacleSpawn" type="Area2D"]
+position = Vector2(10, -384)
+script = ExtResource("1_a81k4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_s8oxd")
