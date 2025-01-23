@@ -13,6 +13,12 @@ size = Vector2(20, 521)
 [node name="BicycleGame" type="Node2D"]
 script = ExtResource("1_wq730")
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(570, 383)
+
+[node name="ObstacleSpawn" parent="." instance=ExtResource("3_k1n7x")]
+position = Vector2(564, -24)
+
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(570, 385)
 
@@ -25,7 +31,7 @@ position = Vector2(280, -61)
 shape = SubResource("RectangleShape2D_g0dx3")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-position = Vector2(571, 385)
+position = Vector2(570, 546)
 script = ExtResource("1_alri2")
 
 [node name="Polygon2D" type="Polygon2D" parent="CharacterBody2D"]
@@ -34,8 +40,3 @@ random_color = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 shape = SubResource("RectangleShape2D_rj4al")
-
-[node name="ObstacleSpawn" parent="CharacterBody2D" instance=ExtResource("3_k1n7x")]
-position = Vector2(1, -312)
-
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
