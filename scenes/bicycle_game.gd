@@ -5,6 +5,8 @@ extends Node2D
 var ospawn_offset: float
 var camera_offset: float
 @onready var camera_2d = $Camera2D
+@export var distance_to_level: int
+var current_level = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -18,4 +20,6 @@ func _process(delta: float) -> void:
 	static_body_2d.global_position.y = character_body_2d.global_position.y
 	obstacle_spawn.global_position.y = character_body_2d.global_position.y - ospawn_offset
 	camera_2d.global_position.y = character_body_2d.global_position.y - camera_offset
-	pass
+	if (character_body_2d.position.y <= (distance_to_level * current_level) * -1):
+		current_level += 1
+		print(current_level)

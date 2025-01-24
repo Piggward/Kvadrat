@@ -1,10 +1,13 @@
 extends CharacterBody2D
 
-
 const MAXSPEED = 400.0
 const STEPS_TO_MAXSPEED = 10.0
 const SPEED = 100
-const MAX_SLOW_DOWN_TIME = 3.0
+const MAX_SLOW_DOWN_TIME = 2.0
+
+const TURNSPEED = 20
+const MAX_TURNSPEED = 400
+var turnTimer = 0.0
 #
 var currentPedal = null
 var currentStartSpeed = null
@@ -21,7 +24,7 @@ func _physics_process(delta):
 	var direction = Input.get_axis("ui_left", "ui_right")
 
 	if direction == 0 && velocity.y != 0:
-		if idlePedalTime > 0.4:
+		if idlePedalTime > 0.1:
 			if slow_vel == null:
 				st = 0.0
 				slow_vel = velocity.y
@@ -33,8 +36,9 @@ func _physics_process(delta):
 			idlePedalTime += delta
 	else:
 		if direction != currentPedal:
+			turnTimer = 0.0
+			velocity.x = move_toward(velocity.x, 0, TURNSPEED * 2)
 			if slow_vel != null || currentStartSpeed == null: 
-				print("stop slow")
 				# Stop slowing down
 				currentSlowDownTime = null
 				slow_vel = null
@@ -45,8 +49,14 @@ func _physics_process(delta):
 			set_next_pedal(direction)
 			increase_speed()
 		else:
-			velocity.x += 5 * direction
-	print(velocity)
+			turnTimer += delta
+			if turnTimer > -1:
+				if (abs(velocity.x) * direction == -velocity.x) && velocity.x != 0:
+					velocity.x = move_toward(velocity.x, 0, TURNSPEED * 2)
+				else:
+					velocity.x += TURNSPEED * direction
+				
+		velocity.x = clamp(velocity.x, -MAX_TURNSPEED, MAX_TURNSPEED)
 	move_and_slide()
 	
 func turn(direction):

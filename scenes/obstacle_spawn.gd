@@ -11,12 +11,14 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func spawn_obstacle():
-	var obs = COLLISION_OBJECT.instantiate()
-	var rand_pos = -1 if randi_range(0, 1) == 0 else 1 
-	var random_x = randi_range(0, size)
-	var ex = random_x * rand_pos
-	obs.global_position = Vector2(self.global_position.x + ex, self.global_position.y)
-	get_parent().get_parent().add_child(obs)
+	for i in get_parent().current_level:
+		var obs = COLLISION_OBJECT.instantiate()
+		var rand_pos = -1 if randi_range(0, 1) == 0 else 1 
+		var random_x = randi_range(0, size)
+		var ex = random_x * rand_pos
+		obs.global_position = Vector2(self.global_position.x + ex, self.global_position.y)
+		obs.scale = Vector2(0.5, 0.5)
+		get_parent().get_parent().add_child(obs)
 	await get_tree().create_timer(1).timeout
 	spawn_obstacle()
 
