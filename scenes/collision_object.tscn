@@ -3,13 +3,16 @@
 [ext_resource type="Texture2D" uid="uid://diy1alic7huw1" path="res://art/white.png" id="1_s5w5o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n2o0v"]
-size = Vector2(162, 162)
+size = Vector2(41, 40)
 
 [node name="CollisionObject" type="Area2D"]
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_n2o0v")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(159.034, 159.959)
+position = Vector2(-1.90735e-06, 0)
+scale = Vector2(40, 40)
 texture = ExtResource("1_s5w5o")

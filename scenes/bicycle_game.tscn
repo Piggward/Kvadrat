@@ -12,7 +12,8 @@ size = Vector2(20, 521)
 
 [node name="BicycleGame" type="Node2D"]
 script = ExtResource("1_wq730")
-distance_to_level = 1000
+distance_to_level = 2000
+distance_to_obstacle = 500
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(570, 383)
