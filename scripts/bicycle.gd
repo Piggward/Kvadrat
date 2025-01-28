@@ -18,11 +18,23 @@ var idlePedalTime = 0.0
 var currentSlowDownTime = 0.0
 var currentPedalSteps = 0.0
 
+var penalty = false
+
+func set_penalty():
+	if penalty == true:
+		return
+	penalty = true
+	velocity.y /= 4
+	await get_tree().create_timer(1).timeout
+	penalty = false
+
 func _physics_process(delta):
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction = Input.get_axis("ui_left", "ui_right")
-
+	
+	
+	
 	if direction == 0 && velocity.y != 0:
 		if idlePedalTime > 0.1:
 			if slow_vel == null:
@@ -36,18 +48,21 @@ func _physics_process(delta):
 			idlePedalTime += delta
 	else:
 		if direction != currentPedal:
-			turnTimer = 0.0
-			velocity.x = move_toward(velocity.x, 0, TURNSPEED * 2)
-			if slow_vel != null || currentStartSpeed == null: 
-				# Stop slowing down
-				currentSlowDownTime = null
-				slow_vel = null
-				# Set start speed
-				currentStartSpeed = velocity.y
-				
-			currentPedalSteps = clamp(currentPedalSteps+1, 0.0, STEPS_TO_MAXSPEED)
-			set_next_pedal(direction)
-			increase_speed()
+			if penalty:
+				set_next_pedal(direction)
+			else:
+				turnTimer = 0.0
+				velocity.x = move_toward(velocity.x, 0, TURNSPEED * 2)
+				if slow_vel != null || currentStartSpeed == null: 
+					# Stop slowing down
+					currentSlowDownTime = null
+					slow_vel = null
+					# Set start speed
+					currentStartSpeed = velocity.y
+					
+				currentPedalSteps = clamp(currentPedalSteps+1, 0.0, STEPS_TO_MAXSPEED)
+				set_next_pedal(direction)
+				increase_speed()
 		else:
 			turnTimer += delta
 			if turnTimer > -1:

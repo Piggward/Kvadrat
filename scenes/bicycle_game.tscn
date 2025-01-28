@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://bgannvtipxti7"]
+[gd_scene load_steps=9 format=3 uid="uid://bgannvtipxti7"]
 
 [ext_resource type="Script" path="res://scripts/bicycle.gd" id="1_alri2"]
 [ext_resource type="Script" path="res://scripts/round_poly.gd" id="1_ihlao"]
 [ext_resource type="Script" path="res://scenes/bicycle_game.gd" id="1_wq730"]
+[ext_resource type="Script" path="res://scenes/bicycle_camera.gd" id="2_0q7b6"]
 [ext_resource type="PackedScene" uid="uid://6lm0vlm52iyn" path="res://scenes/obstacle_spawn.tscn" id="3_k1n7x"]
+[ext_resource type="Script" path="res://scenes/bicycle_railing.gd" id="4_5gyq1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g0dx3"]
 size = Vector2(20, 521)
@@ -17,12 +19,14 @@ distance_to_obstacle = 500
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(570, 383)
+script = ExtResource("2_0q7b6")
 
 [node name="ObstacleSpawn" parent="." instance=ExtResource("3_k1n7x")]
 position = Vector2(564, -24)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(570, 385)
+script = ExtResource("4_5gyq1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(-277, -58.5)
@@ -32,13 +36,14 @@ shape = SubResource("RectangleShape2D_g0dx3")
 position = Vector2(280, -61)
 shape = SubResource("RectangleShape2D_g0dx3")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(570, 546)
+collision_layer = 2
 script = ExtResource("1_alri2")
 
-[node name="Polygon2D" type="Polygon2D" parent="CharacterBody2D"]
+[node name="Polygon2D" type="Polygon2D" parent="Player"]
 script = ExtResource("1_ihlao")
 random_color = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 shape = SubResource("RectangleShape2D_rj4al")

@@ -7,8 +7,11 @@ size = Vector2(538, 20)
 
 [node name="ObstacleSpawn" type="Area2D"]
 position = Vector2(10, -384)
+collision_mask = 2
 script = ExtResource("1_a81k4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_s8oxd")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
