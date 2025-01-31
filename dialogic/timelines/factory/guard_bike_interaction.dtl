@@ -1,0 +1,18 @@
+Guard: What in the radius...
+Guard: You there! Square!
+Guard: What are you even standing on? Is that supposed to be a bike?
+- Yes | [=""]
+	Guard: Well it looks like whoever drew it is missing some brain cells.
+- Its a very efficient way of transportation
+	Guard: Hmm, efficient you say?
+Guard: Tell you what, I BET that it takes you more than two minutes to get into town with that thing. 
+Guard: If Im wrong, I will give you access to the docs at night if you ever need it. 
+Guard: But if Im right, then you owe me a... favour...
+label test (hej)
+Guard: Do we have a deal?
+- Yes | [=""]
+- What kind of favour?
+	Guard: Dont ask so many questions.
+	jump test
+Guard: Great! Dont forget to paddle between left and right to increase speed. Thats how bicycles works I think.
+[signal arg="end_scene"]

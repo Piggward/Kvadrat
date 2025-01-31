@@ -21,7 +21,7 @@ Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 [dialogic]
 
 directories/dch_directory={
-"Guard 1": "res://dialogic/characters/Guard 1.dch",
+"Guard": "res://dialogic/characters/Guard 1.dch",
 "character": "res://dialogic/characters/character.dch",
 "general_jimmy": "res://dialogic/characters/general_jimmy.dch"
 }
@@ -29,6 +29,7 @@ directories/dtl_directory={
 "enter_apartment": "res://dialogic/timelines/enter_apartment.dtl",
 "general_jimmy_entrance": "res://dialogic/timelines/factory/general_jimmy_entrance.dtl",
 "giraffe": "res://dialogic/timelines/factory/giraffe.dtl",
+"guard_bike_interaction": "res://dialogic/timelines/factory/guard_bike_interaction.dtl",
 "guard_encounter": "res://dialogic/timelines/factory/guard_encounter.dtl",
 "guard_prank": "res://dialogic/timelines/factory/guard_prank.dtl",
 "indoor_factory_guard": "res://dialogic/timelines/factory/indoor_factory_guard.dtl",

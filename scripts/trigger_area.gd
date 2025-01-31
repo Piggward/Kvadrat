@@ -25,8 +25,6 @@ func _on_body_entered(body: Node2D):
 	if delay > 0:
 		await get_tree().create_timer(delay).timeout
 	triggered = single_trigger
-	var og_parent = body.get_parent()
-	body.reparent(self)
 	if disable_player:
 		body.process_mode = Node.PROCESS_MODE_DISABLED
 	if preAnimationTimeLine != "":
@@ -37,7 +35,6 @@ func _on_body_entered(body: Node2D):
 	if postAnimationTimeLine != "":
 		await play_timeline(load("res://dialogic/timelines/" + postAnimationTimeLine + ".dtl"), body)
 		
-	body.reparent(og_parent)
 	body.process_mode = Node.PROCESS_MODE_INHERIT
 	pass # Replace with function body.
 
@@ -47,3 +44,7 @@ func play_timeline(timeline, body):
 		body.process_mode = Node.PROCESS_MODE_DISABLED
 		await Dialogic.timeline_ended
 		body.process_mode = Node.PROCESS_MODE_INHERIT
+		
+func tweenit(object: PhysicsBody2D, new_pos: Vector2, speed: float, property: String):
+	var tween = create_tween().set_parallel(true)
+	tween.tween_property(object, property, new_pos, speed)

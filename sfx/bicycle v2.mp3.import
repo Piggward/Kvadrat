@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dmp5dy5lnducn"
+path="res://.godot/imported/bicycle v2.mp3-5604c70bfe2ea35304feebcd0893bc14.mp3str"
+
+[deps]
+
+source_file="res://sfx/bicycle v2.mp3"
+dest_files=["res://.godot/imported/bicycle v2.mp3-5604c70bfe2ea35304feebcd0893bc14.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

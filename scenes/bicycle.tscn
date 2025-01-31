@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cfffnsanp7mqw"]
+
+[ext_resource type="Texture2D" uid="uid://g81epuc8fob" path="res://art/Bicycle.png" id="1_ecm4n"]
+
+[node name="Sprite2D" type="Sprite2D"]
+position = Vector2(1, 2)
+scale = Vector2(0.0159053, 0.0159053)
+texture = ExtResource("1_ecm4n")

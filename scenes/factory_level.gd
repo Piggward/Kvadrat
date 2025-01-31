@@ -13,13 +13,13 @@ extends Node2D
 @onready var guard_6 = $Npcs/Guard6
 @onready var fish_box = $FishBox
 @onready var fish_storage = $FishStorage
-
+const TRANSITION_AREA = preload("res://scenes/transition_area.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	play_fish_minigame()
-	await get_tree().create_timer(1).timeout
-	start_game()
+	#play_fish_minigame()
+	#await get_tree().create_timer(1).timeout
+	#start_game()
 	Dialogic.signal_event.connect(on_dialogic_signal)
 	pass # Replace with function body.
 
@@ -49,6 +49,12 @@ func on_dialogic_signal(m: String):
 	match m:
 		"general_jimmy_entrance_finish":
 			animation_player.play("general_jimmy_back_to_office")
+		"end_scene":
+			print("ending scene")
+			var x = TRANSITION_AREA.instantiate()
+			x.trigger_asap = true
+			x.file_name = ("res://scenes/bicycle_game.tscn")
+			self.add_child(x)
 			
 func play_fish_minigame():
 	player.global_position = Vector2(904, 383)

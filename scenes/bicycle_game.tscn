@@ -1,21 +1,112 @@
-[gd_scene load_steps=9 format=3 uid="uid://bgannvtipxti7"]
+[gd_scene load_steps=19 format=3 uid="uid://bgannvtipxti7"]
 
 [ext_resource type="Script" path="res://scripts/bicycle.gd" id="1_alri2"]
 [ext_resource type="Script" path="res://scripts/round_poly.gd" id="1_ihlao"]
 [ext_resource type="Script" path="res://scenes/bicycle_game.gd" id="1_wq730"]
 [ext_resource type="Script" path="res://scenes/bicycle_camera.gd" id="2_0q7b6"]
+[ext_resource type="Script" path="res://scenes/roadmark.gd" id="3_isxm1"]
 [ext_resource type="PackedScene" uid="uid://6lm0vlm52iyn" path="res://scenes/obstacle_spawn.tscn" id="3_k1n7x"]
 [ext_resource type="Script" path="res://scenes/bicycle_railing.gd" id="4_5gyq1"]
+[ext_resource type="Script" path="res://scenes/time_left_label.gd" id="7_78oya"]
+[ext_resource type="PackedScene" uid="uid://cfffnsanp7mqw" path="res://scenes/bicycle.tscn" id="7_hn0nt"]
+[ext_resource type="Texture2D" uid="uid://diy1alic7huw1" path="res://art/white.png" id="9_uesix"]
+[ext_resource type="AudioStream" uid="uid://dmp5dy5lnducn" path="res://sfx/bicycle v2.mp3" id="11_yj82m"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ea0ac"]
+bg_color = Color(0.129412, 0.145098, 0.156863, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p0jde"]
+bg_color = Color(0.372549, 0.482353, 0.32549, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g0dx3"]
 size = Vector2(20, 521)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rj4al"]
 
+[sub_resource type="Animation" id="Animation_0lgmv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_xbg0b"]
+resource_name = "player_hit"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.533333, 0.8, 1.06667, 1.33333, 1.56667, 1.8, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ac0s7"]
+_data = {
+"RESET": SubResource("Animation_0lgmv"),
+"player_hit": SubResource("Animation_xbg0b")
+}
+
 [node name="BicycleGame" type="Node2D"]
 script = ExtResource("1_wq730")
-distance_to_level = 2000
-distance_to_obstacle = 500
+distance_to_level = 5000
+distance_to_obstacle = 250
+time = 120.0
+distance_to_finish = 1000.0
+
+[node name="roadmarks" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="roadmarks"]
+position = Vector2(564, 16)
+rotation = 3.14159
+scale = Vector2(7.83759, -76.172)
+texture = ExtResource("9_uesix")
+script = ExtResource("3_isxm1")
+
+[node name="Sprite2D2" type="Sprite2D" parent="roadmarks"]
+position = Vector2(564, 324)
+rotation = 3.14159
+scale = Vector2(7.83759, -76.172)
+texture = ExtResource("9_uesix")
+script = ExtResource("3_isxm1")
+
+[node name="Sprite2D3" type="Sprite2D" parent="roadmarks"]
+position = Vector2(564, 643)
+rotation = 3.14159
+scale = Vector2(7.83759, -76.172)
+texture = ExtResource("9_uesix")
+script = ExtResource("3_isxm1")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TimeLeftLabel" type="Label" parent="CanvasLayer"]
+offset_left = 499.0
+offset_top = 2.0
+offset_right = 641.0
+offset_bottom = 49.0
+script = ExtResource("7_78oya")
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
+offset_left = 870.0
+offset_top = 449.0
+offset_right = 1101.0
+offset_bottom = 476.0
+rotation = 4.71239
+theme_override_styles/background = SubResource("StyleBoxFlat_ea0ac")
+theme_override_styles/fill = SubResource("StyleBoxFlat_p0jde")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(570, 383)
@@ -36,14 +127,45 @@ shape = SubResource("RectangleShape2D_g0dx3")
 position = Vector2(280, -61)
 shape = SubResource("RectangleShape2D_g0dx3")
 
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D"]
+position = Vector2(0, -120)
+color = Color(0.196078, 0.231373, 0.258824, 1)
+polygon = PackedVector2Array(-288, -422, -267, -420, -267, 467, -288, 467)
+
+[node name="Polygon2D2" type="Polygon2D" parent="StaticBody2D"]
+position = Vector2(558, -105)
+color = Color(0.196078, 0.231373, 0.258824, 1)
+polygon = PackedVector2Array(-288, -418, -267, -418, -267, 449, -288, 450)
+
+[node name="End" type="Marker2D" parent="StaticBody2D"]
+position = Vector2(-1, 305)
+
+[node name="Start" type="Marker2D" parent="StaticBody2D"]
+position = Vector2(-5, -623)
+
 [node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(570, 546)
 collision_layer = 2
 script = ExtResource("1_alri2")
 
+[node name="Sprite2D" parent="Player" instance=ExtResource("7_hn0nt")]
+position = Vector2(4, 17)
+scale = Vector2(0.15252, 0.127789)
+
 [node name="Polygon2D" type="Polygon2D" parent="Player"]
+color = Color(0.141176, 0.321569, 0.45098, 1)
+polygon = PackedVector2Array(-10, -10, 10, -10, 10, 10, -10, 10)
 script = ExtResource("1_ihlao")
-random_color = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 shape = SubResource("RectangleShape2D_rj4al")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ac0s7")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("11_yj82m")
+autoplay = true

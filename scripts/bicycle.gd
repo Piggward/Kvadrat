@@ -1,12 +1,12 @@
 extends CharacterBody2D
 
-const MAXSPEED = 400.0
-const STEPS_TO_MAXSPEED = 10.0
+const MAXSPEED = 600.0
+const STEPS_TO_MAXSPEED = 20.0
 const SPEED = 100
 const MAX_SLOW_DOWN_TIME = 2.0
 
 const TURNSPEED = 20
-const MAX_TURNSPEED = 400
+const MAX_TURNSPEED = 600
 var turnTimer = 0.0
 #
 var currentPedal = null
@@ -17,6 +17,7 @@ var slow_vel = null
 var idlePedalTime = 0.0
 var currentSlowDownTime = 0.0
 var currentPedalSteps = 0.0
+@onready var animation_player = $"../AnimationPlayer"
 
 var penalty = false
 
@@ -25,6 +26,7 @@ func set_penalty():
 		return
 	penalty = true
 	velocity.y /= 4
+	animation_player.play("player_hit")
 	await get_tree().create_timer(1).timeout
 	penalty = false
 
@@ -90,5 +92,5 @@ func set_next_pedal(newpedal):
 	currentPedal = newpedal
 	
 func slow_down():
-	var progress = 1 - ease(st / MAX_SLOW_DOWN_TIME, 0.4)
+	var progress = 1 - ease(st / MAX_SLOW_DOWN_TIME, 0.2)
 	velocity.y = slow_vel * progress

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c8adtwasygxuy"
+path="res://.godot/imported/funky town mp3.mp3-5873541da063097ceef1d2c1273a873e.mp3str"
+
+[deps]
+
+source_file="res://sfx/funky town mp3.mp3"
+dest_files=["res://.godot/imported/funky town mp3.mp3-5873541da063097ceef1d2c1273a873e.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
