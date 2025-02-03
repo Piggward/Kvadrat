@@ -20,10 +20,10 @@ func _ready():
 		var col = CollisionPolygon2D.new()
 		col.polygon = pol
 		static_body_2d.add_child(col)
-	if random_color:
-		poly.color = Color(randf_range(0, 1),randf_range(0, 1), randf_range(0, 1), randf_range(0, 1))
-	if color:
-		poly.color = color
+	var rc = Color(randf_range(0, 1),randf_range(0, 1), randf_range(0, 1), randf_range(0, 1))
+	for child in get_children():
+		if child is Polygon2D and not child.name == "Gun":
+			child.color = rc if random_color else color
 	pass # Replace with function body.
 
 func _draw():
@@ -33,6 +33,7 @@ func _draw():
 	#draw_polyline([polygon[0], polygon[polygon.size() - 1]], Color.BLACK, 0.5)
 	for i in range(poly.polygon.size()):
 		draw_polyline([poly.polygon[i], poly.polygon[(i + 1) % poly.polygon.size()]], Color.BLACK, 1)
+		
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

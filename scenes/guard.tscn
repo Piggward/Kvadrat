@@ -17,6 +17,6 @@ shape = SubResource("RectangleShape2D_1wjlr")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
-[node name="Polygon2D2" type="Polygon2D" parent="."]
+[node name="Gun" type="Polygon2D" parent="."]
 color = Color(0.129412, 0.145098, 0.156863, 1)
 polygon = PackedVector2Array(11, 3, 16, 3, 16, -6, 29, -6, 29, -11, 11, -11)

@@ -6,13 +6,18 @@ extends Area2D
 @export var disable_player: bool
 @export var animation: String
 @export var delay: float
+@export var trigger_string: String
 var triggered = false
 @onready var animation_player = $"../AnimationPlayer"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Dialogic.signal_event.connect(on_dialogic_signal)
 	pass # Replace with function body.
 
+func on_dialogic_signal(s):
+	if s == trigger_string:
+		trigger()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -20,6 +25,12 @@ func _process(delta):
 
 
 func _on_body_entered(body: Node2D):
+	if body is Player:
+		trigger()
+
+
+func trigger():
+	var body = get_tree().get_first_node_in_group("player")
 	if triggered:
 		return
 	if delay > 0:

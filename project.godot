@@ -21,11 +21,16 @@ Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 [dialogic]
 
 directories/dch_directory={
+"Abusive circle 1": "res://dialogic/characters/Abusive circle 1.dch",
+"Abusive circle 2": "res://dialogic/characters/Abusive circle 2.dch",
 "Guard": "res://dialogic/characters/Guard 1.dch",
+"Unknown": "res://dialogic/characters/Unknown.dch",
 "character": "res://dialogic/characters/character.dch",
 "general_jimmy": "res://dialogic/characters/general_jimmy.dch"
 }
 directories/dtl_directory={
+"Enter_Ally": "res://dialogic/timelines/town/Enter_Ally.dtl",
+"Enter_alley": "res://dialogic/timelines/town/Enter_alley.dtl",
 "enter_apartment": "res://dialogic/timelines/enter_apartment.dtl",
 "general_jimmy_entrance": "res://dialogic/timelines/factory/general_jimmy_entrance.dtl",
 "giraffe": "res://dialogic/timelines/factory/giraffe.dtl",
@@ -37,6 +42,7 @@ directories/dtl_directory={
 "jimmy_office_dialogue": "res://dialogic/timelines/factory/jimmy_office_dialogue.dtl",
 "monkey": "res://dialogic/timelines/factory/monkey.dtl",
 "note": "res://dialogic/timelines/note.dtl",
+"post_abuse": "res://dialogic/timelines/town/post_abuse.dtl",
 "rhino": "res://dialogic/timelines/factory/rhino.dtl",
 "timeline": "res://dialogic/timelines/timeline.dtl"
 }
