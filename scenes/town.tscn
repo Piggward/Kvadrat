@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://pk55de7m4ecv"]
+[gd_scene load_steps=23 format=4 uid="uid://pk55de7m4ecv"]
 
 [ext_resource type="PackedScene" uid="uid://bdsuve0wt5rih" path="res://scenes/tile_map_layer.tscn" id="1_5gueb"]
 [ext_resource type="PackedScene" uid="uid://c47dbt5xaa2jg" path="res://scenes/player.tscn" id="2_wnave"]
@@ -19,7 +19,11 @@ initial_velocity_max = 56.9
 gravity = Vector3(0, 98, 0)
 color = Color(1, 0, 0, 1)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_h7kae"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nscno"]
+bounce = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w2lxv"]
+radius = 7.0
 
 [sub_resource type="Environment" id="Environment_jqccw"]
 glow_enabled = true
@@ -191,6 +195,47 @@ tracks/5/keys = {
 "values": [Vector2(4, 4), Vector2(4, 4), Vector2(2, 2)]
 }
 
+[sub_resource type="Animation" id="Animation_pne7d"]
+resource_name = "alley_zoom"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player/Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -6), Vector2(-219, -8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player/Camera2D:zoom")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2, 2), Vector2(4, 4)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Events/AlleyAbuse")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"trigger"
+}]
+}
+
 [sub_resource type="Animation" id="Animation_2y7hd"]
 resource_name = "cut_corners"
 length = 3.5
@@ -278,47 +323,6 @@ tracks/5/keys = {
 "values": [Vector2(-549, -587), Vector2(-549, -587), Vector2(-540, -583), Vector2(-552, -586), Vector2(-549, -584), Vector2(-549, -584), Vector2(-540, -573), Vector2(-552, -578), Vector2(-549, -577)]
 }
 
-[sub_resource type="Animation" id="Animation_pne7d"]
-resource_name = "alley_zoom"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Player/Camera2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, -6), Vector2(-219, -8)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Player/Camera2D:zoom")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(2, 2), Vector2(4, 4)]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Events/AlleyAbuse")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"trigger"
-}]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jol3n"]
 _data = {
 "RESET": SubResource("Animation_gcp58"),
@@ -396,11 +400,9 @@ script = ExtResource("5_yr2cj")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="Npcs"]
 position = Vector2(840, -488)
+physics_material_override = SubResource("PhysicsMaterial_nscno")
 gravity_scale = 0.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Npcs/RigidBody2D"]
-scale = Vector2(0.992553, 0.873842)
-shape = SubResource("CircleShape2D_h7kae")
+lock_rotation = true
 
 [node name="Json" parent="Npcs/RigidBody2D" instance=ExtResource("3_4n7wc")]
 random_color = false
@@ -409,8 +411,12 @@ radius = 7
 
 [node name="PushableArea" parent="Npcs/RigidBody2D" instance=ExtResource("4_gotx2")]
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Npcs/RigidBody2D"]
+scale = Vector2(0.992553, 0.873842)
+shape = SubResource("CircleShape2D_w2lxv")
+
 [node name="Player" parent="." instance=ExtResource("2_wnave")]
-position = Vector2(433, -243)
+position = Vector2(858, -420)
 speed = 150
 
 [node name="Camera2D" type="Camera2D" parent="Player"]

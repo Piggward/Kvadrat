@@ -26,5 +26,4 @@ func _on_body_entered(body):
 func _on_body_exited(body):
 	if body is Player:
 		body.pushable_object = null
-		body.pushing = false
 	pass # Replace with function body.
