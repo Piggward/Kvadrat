@@ -35,17 +35,21 @@ directories/dtl_directory={
 "Enter_alley": "res://dialogic/timelines/town/Enter_alley.dtl",
 "Father": "res://dialogic/timelines/town/Father.dtl",
 "Jason": "res://dialogic/timelines/town/Jason.dtl",
+"campfire_talk": "res://dialogic/timelines/town/campfire_talk.dtl",
 "enter_apartment": "res://dialogic/timelines/enter_apartment.dtl",
 "general_jimmy_entrance": "res://dialogic/timelines/factory/general_jimmy_entrance.dtl",
 "giraffe": "res://dialogic/timelines/factory/giraffe.dtl",
+"guard_apartment": "res://dialogic/timelines/town/guard_apartment.dtl",
 "guard_bike_interaction": "res://dialogic/timelines/factory/guard_bike_interaction.dtl",
 "guard_encounter": "res://dialogic/timelines/factory/guard_encounter.dtl",
 "guard_prank": "res://dialogic/timelines/factory/guard_prank.dtl",
 "indoor_factory_guard": "res://dialogic/timelines/factory/indoor_factory_guard.dtl",
 "indoor_guard_fish_box": "res://dialogic/timelines/factory/indoor_guard_fish_box.dtl",
+"injured_square": "res://dialogic/timelines/town/injured_square.dtl",
 "jason_found": "res://dialogic/timelines/town/jason_found.dtl",
 "jason_reward": "res://dialogic/timelines/town/jason_reward.dtl",
 "jimmy_office_dialogue": "res://dialogic/timelines/factory/jimmy_office_dialogue.dtl",
+"join_campfire": "res://dialogic/timelines/town/join_campfire.dtl",
 "monkey": "res://dialogic/timelines/factory/monkey.dtl",
 "note": "res://dialogic/timelines/note.dtl",
 "post_abuse": "res://dialogic/timelines/town/post_abuse.dtl",
@@ -54,7 +58,7 @@ directories/dtl_directory={
 }
 glossary/default_case_sensitive=true
 extensions_folder="res://addons/dialogic_additions"
-text/letter_speed=0.025
+text/letter_speed=0.06
 text/initial_text_reveal_skippable=true
 text/text_reveal_skip_delay=0.1
 text/advance_delay=0.1
@@ -80,7 +84,7 @@ variables={
 "Received edges": false,
 "Talked_to_json": false
 }
-text/autocolor_names=true
+text/autocolor_names=false
 
 [editor_plugins]
 

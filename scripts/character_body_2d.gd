@@ -7,7 +7,6 @@ var pushable_object: PushableArea = null
 const STINK = preload("res://scenes/stink.tscn")
 @onready var player_state_machine = $PlayerStateMachine
 var push_force = 2
-@onready var camera_2d = $Camera2D
 
 func _ready():
 	player_state_machine.init(self)
@@ -22,7 +21,6 @@ func set_stinky(value: bool):
 				
 func _physics_process(delta):
 	player_state_machine.process_physics()
-	print(camera_2d.position)
 	for i in get_slide_collision_count():
 		var c = get_slide_collision(i)
 		if c.get_collider() is RigidBody2D:

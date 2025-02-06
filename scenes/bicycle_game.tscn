@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://6lm0vlm52iyn" path="res://scenes/obstacle_spawn.tscn" id="3_k1n7x"]
 [ext_resource type="Script" path="res://scenes/bicycle_railing.gd" id="4_5gyq1"]
 [ext_resource type="Script" path="res://scenes/time_left_label.gd" id="7_78oya"]
-[ext_resource type="PackedScene" uid="uid://cfffnsanp7mqw" path="res://scenes/bicycle.tscn" id="7_hn0nt"]
+[ext_resource type="PackedScene" path="res://scenes/bicycle.tscn" id="7_hn0nt"]
 [ext_resource type="Texture2D" uid="uid://diy1alic7huw1" path="res://art/white.png" id="9_uesix"]
 [ext_resource type="AudioStream" uid="uid://dmp5dy5lnducn" path="res://sfx/bicycle v2.mp3" id="11_yj82m"]
 
