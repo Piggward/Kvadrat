@@ -1,0 +1,7 @@
+if {Json_Saved} == true:
+	Father: Thank you for finding my son. You squares are pretty OK. 
+else:
+	Father: JASON!
+	Father: JASON! JASON! 
+	Father: Hey you! I know you are a square and all, but I need your help. I cannot find my son, Jason. He must have gotten lost somewhere around here...
+	Father: Please, just the fact that I am sinking so low to ask a square for help should tell you how desperate I am.

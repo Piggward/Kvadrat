@@ -14,7 +14,9 @@ func _process(delta):
 	pass
 	
 func push(force: Vector2):
-	object.apply_central_force(force)
+	var x = Dialogic.VAR
+	if Dialogic.VAR.Talked_to_json:
+		object.apply_central_force(force)
 
 
 func _on_body_entered(body):

@@ -1,0 +1,8 @@
+if {Talked_to_json} != true:
+	Jason: Hiya!
+	Jason: I'm Jason! My father kicked me too far into the alley...
+	Jason: Oh, dont worry! It's not as bad as it sounds. Since I am a circle its only natural to kick me like a football. 
+	Jason: Kicking a child like a football is kind of like pushing a baby in a stroller.
+	Jason: Anyways, now I cannot come out... Could you kick me out again?
+	Jason: It's easy! Just imagine that you are pushing a large container full of rotten fish around... Kind of. 
+	set {Talked_to_json} = true

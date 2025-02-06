@@ -1,0 +1,155 @@
+[gd_scene load_steps=7 format=3 uid="uid://dfxtp6mnoa65a"]
+
+[ext_resource type="AudioStream" uid="uid://dsvmlc2pum2y6" path="res://sfx/item received.wav" id="1_esqi3"]
+
+[sub_resource type="Animation" id="Animation_dihyx"]
+resource_name = "new_item"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0666667, 0.3, 0.433333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-1292, 209), Vector2(-724.533, 209), Vector2(-76, 209)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0666667, 0.4, 0.7, 0.866667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1161, 209), Vector2(1161, 209), Vector2(892, 207), Vector2(188, 209)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0666667, 0.666667, 1.03333, 1.26667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(337, -121), Vector2(337, -121), Vector2(337, -64), Vector2(337, 208)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioStreamPlayer2D")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_vuas0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1292, 209)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1161, 214)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(337, -121)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x4b8k"]
+_data = {
+"RESET": SubResource("Animation_vuas0"),
+"new_item": SubResource("Animation_dihyx")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mt1f4"]
+bg_color = Color(0.315614, 0.639737, 0.813953, 0.576471)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hncf6"]
+bg_color = Color(0.720152, 0.576738, 0.274056, 0.443137)
+
+[node name="ItemReceived" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_x4b8k")
+}
+autoplay = "new_item"
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = -76.0
+offset_top = 209.0
+offset_right = 1213.0
+offset_bottom = 319.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_mt1f4")
+
+[node name="Panel2" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 188.0
+offset_top = 209.0
+offset_right = 1030.0
+offset_bottom = 319.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_hncf6")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 337.0
+offset_top = 208.0
+offset_right = -306.0
+offset_bottom = -324.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 75
+text = "Item received"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_esqi3")

@@ -1,0 +1,6 @@
+Father: Thank you! I never would have thought that one day, a square would save my child.
+Father: I was wrong about you and your kind. I will tell everyone about your heroism.
+Father: Here take this. I found it when I was searching for Jason.
+set {Json_Saved} = true
+set {Received edges} = true
+[signal arg="reward"]
