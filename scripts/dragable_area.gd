@@ -42,5 +42,5 @@ func _on_body_entered(body):
 
 func _on_body_exited(body):
 	if body is Player and dragging: 
-		stop_drag()
 		player.dragable_object = null
+		stop_drag()

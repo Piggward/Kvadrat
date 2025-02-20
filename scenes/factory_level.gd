@@ -14,18 +14,20 @@ extends Node2D
 @onready var fish_box = $FishBox
 @onready var fish_storage = $FishStorage
 const TRANSITION_AREA = preload("res://scenes/transition_area.tscn")
+@onready var fish_minigame_marker = $FishMinigameMarker
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#play_fish_minigame()
-	#await get_tree().create_timer(1).timeout
-	#start_game()
+	play_fish_minigame()
+	await get_tree().create_timer(0.5).timeout
+	start_game()
 	Dialogic.signal_event.connect(on_dialogic_signal)
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	print(player.position)
 	pass
 	
 func start_game():
@@ -57,7 +59,7 @@ func on_dialogic_signal(m: String):
 			self.add_child(x)
 			
 func play_fish_minigame():
-	player.global_position = Vector2(904, 383)
+	player.position = fish_minigame_marker.position
 	camera_2d.position = Vector2(0, -31)
 	camera_2d.zoom = Vector2(17, 17)
 	

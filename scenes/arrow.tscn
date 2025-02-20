@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bqfpnsriwqqav"]
+
+[node name="Polygon2D" type="Polygon2D"]
+rotation = 0.00580573
+color = Color(1, 0, 0, 1)
+polygon = PackedVector2Array(-1.99997, 0.0116114, 1.99997, -0.0116114, 1.95933, -7.01149, 4.95928, -7.02891, -0.0812798, -13.9998, -5.04056, -6.97085, -2.04061, -6.98827)

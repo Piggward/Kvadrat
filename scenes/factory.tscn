@@ -4,10 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://d0ihurta7jp6w" path="res://art/room.png" id="2_6ppvi"]
 [ext_resource type="PackedScene" uid="uid://c47dbt5xaa2jg" path="res://scenes/player.tscn" id="2_eoc2m"]
 [ext_resource type="Script" path="res://scenes/spawn_area.gd" id="4_inag4"]
-[ext_resource type="PackedScene" path="res://scenes/tile_map_layer.tscn" id="4_klhj7"]
+[ext_resource type="PackedScene" uid="uid://bdsuve0wt5rih" path="res://scenes/tile_map_layer.tscn" id="4_klhj7"]
 [ext_resource type="Texture2D" uid="uid://cj8fk4askf4yk" path="res://art/black.png" id="4_vg53m"]
 [ext_resource type="Script" path="res://scenes/animation_player.gd" id="5_7pmsi"]
-[ext_resource type="PackedScene" path="res://scenes/bicycle.tscn" id="5_ef842"]
+[ext_resource type="PackedScene" uid="uid://cfffnsanp7mqw" path="res://scenes/bicycle.tscn" id="5_ef842"]
 [ext_resource type="Script" path="res://scenes/despawn_area.gd" id="5_wtphi"]
 [ext_resource type="Texture2D" uid="uid://diy1alic7huw1" path="res://art/white.png" id="7_efk0d"]
 [ext_resource type="Script" path="res://scenes/belt_area.gd" id="8_fldjp"]
@@ -113,7 +113,7 @@ tracks/6/keys = {
 }
 tracks/7/type = "value"
 tracks/7/imported = false
-tracks/7/enabled = false
+tracks/7/enabled = true
 tracks/7/path = NodePath("Player:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
@@ -121,7 +121,7 @@ tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(788, 959)]
+"values": [Vector2(911, 384)]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
@@ -360,34 +360,22 @@ resource_name = "guard_prank"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Player:position")
+tracks/0/path = NodePath("Npcs/Guard6:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"update": 0,
-"values": []
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Npcs/Guard6:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(-218, 490), Vector2(-261, 573)]
 }
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(1),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -395,13 +383,13 @@ tracks/2/keys = {
 "method": &"init_prank_animation"
 }]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Npcs/Guard6:rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Npcs/Guard6:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0.0333333, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
@@ -569,7 +557,7 @@ size = Vector2(2, 28)
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
-tracks/0/enabled = true
+tracks/0/enabled = false
 tracks/0/path = NodePath("HBoxContainer:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
@@ -669,9 +657,9 @@ texture = ExtResource("2_6ppvi")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 texture_filter = 1
-offset_left = 727.0
+offset_left = 732.0
 offset_top = 336.0
-offset_right = 1151.0
+offset_right = 1156.0
 offset_bottom = 368.0
 theme_override_constants/separation = 8
 
@@ -917,7 +905,7 @@ position = Vector2(495, 801)
 scale = Vector2(0.122052, 0.149126)
 
 [node name="Player" parent="." instance=ExtResource("2_eoc2m")]
-position = Vector2(492, 781)
+position = Vector2(911, 384)
 speed = 150
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -1122,6 +1110,7 @@ position = Vector2(1144, 352)
 collision_layer = 256
 collision_mask = 256
 script = ExtResource("4_inag4")
+minigame = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FishBeltItems/SpawnArea"]
 shape = SubResource("RectangleShape2D_v06db")
@@ -1469,6 +1458,9 @@ animation = "guard_approach_bike"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Guard_Bike_interaction"]
 position = Vector2(0, 10.5)
 shape = SubResource("RectangleShape2D_waxrf")
+
+[node name="FishMinigameMarker" type="Marker2D" parent="."]
+position = Vector2(910, 383)
 
 [connection signal="area_entered" from="FishBeltItems/ZoomDespawnArea" to="FishBeltItems/ZoomDespawnArea" method="_on_area_entered"]
 [connection signal="area_entered" from="FishBeltItems/DespawnArea" to="FishBeltItems/DespawnArea" method="_on_area_entered"]

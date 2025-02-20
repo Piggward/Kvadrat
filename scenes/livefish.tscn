@@ -37,7 +37,6 @@ color = Color(0.737747, 0.841173, 0, 1)
 alpha_curve = SubResource("CurveTexture_qxqpi")
 
 [node name="Area2D3" type="Area2D" groups=["fish"]]
-position = Vector2(955, 349)
 collision_layer = 256
 collision_mask = 256
 script = ExtResource("1_28jtl")

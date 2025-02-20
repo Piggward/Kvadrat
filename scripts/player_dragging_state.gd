@@ -5,7 +5,8 @@ func enter():
 	player.dragable_object.drag(player)
 	
 func exit():
-	player.dragable_object.stop_drag()
+	if player.dragable_object:
+		player.dragable_object.stop_drag()
 	
 func process_physics():
 	if player.dragable_object == null || Input.is_action_just_released("action"):

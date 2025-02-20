@@ -1,17 +1,19 @@
-[gd_scene load_steps=27 format=4 uid="uid://c6xtk51coa5vo"]
+[gd_scene load_steps=30 format=4 uid="uid://c6xtk51coa5vo"]
 
 [ext_resource type="Script" path="res://scenes/town.gd" id="1_3niwu"]
-[ext_resource type="PackedScene" path="res://scenes/tile_map_layer.tscn" id="1_5gueb"]
+[ext_resource type="PackedScene" uid="uid://bdsuve0wt5rih" path="res://scenes/tile_map_layer.tscn" id="1_5gueb"]
 [ext_resource type="PackedScene" uid="uid://c47dbt5xaa2jg" path="res://scenes/player.tscn" id="2_wnave"]
 [ext_resource type="PackedScene" uid="uid://b20n0b4v6biv2" path="res://scenes/npc.tscn" id="3_4n7wc"]
 [ext_resource type="PackedScene" uid="uid://b858tqaqwcoe3" path="res://scenes/guard.tscn" id="3_s3bmc"]
 [ext_resource type="AudioStream" uid="uid://coub6krbx7fyq" path="res://sfx/jason.mp3" id="4_3civm"]
-[ext_resource type="PackedScene" path="res://scenes/pushable_area.tscn" id="4_gotx2"]
-[ext_resource type="PackedScene" path="res://scenes/firebarrel.tscn" id="5_cf8ua"]
+[ext_resource type="PackedScene" uid="uid://cd63bkw7sxvq0" path="res://scenes/pushable_area.tscn" id="4_gotx2"]
+[ext_resource type="PackedScene" uid="uid://b5u6wcugkty3v" path="res://scenes/edges.tscn" id="5_376d0"]
+[ext_resource type="PackedScene" uid="uid://gon8uwrbcvur" path="res://scenes/firebarrel.tscn" id="5_cf8ua"]
 [ext_resource type="Script" path="res://scenes/jason.gd" id="5_yr2cj"]
 [ext_resource type="AudioStream" uid="uid://c8adtwasygxuy" path="res://sfx/funky town mp3.mp3" id="6_qv3gg"]
 [ext_resource type="Script" path="res://scenes/jason_rigid.gd" id="7_dn1vr"]
 [ext_resource type="PackedScene" uid="uid://d0yx4phfp5rqn" path="res://scenes/trigger_area.tscn" id="7_vv7q6"]
+[ext_resource type="Script" path="res://scenes/stop_body.gd" id="12_s27q5"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_67bey"]
 particle_flag_disable_z = true
@@ -129,7 +131,7 @@ tracks/7/keys = {
 }
 tracks/8/type = "value"
 tracks/8/imported = false
-tracks/8/enabled = true
+tracks/8/enabled = false
 tracks/8/path = NodePath("Player:rotation")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
@@ -141,7 +143,7 @@ tracks/8/keys = {
 }
 tracks/9/type = "value"
 tracks/9/imported = false
-tracks/9/enabled = true
+tracks/9/enabled = false
 tracks/9/path = NodePath("Player:position")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
@@ -150,6 +152,30 @@ tracks/9/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(-291, -413)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = false
+tracks/10/path = NodePath("CanvasLayer/Control/Edges:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(62, 41)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = false
+tracks/11/path = NodePath("CanvasLayer/Control/Edges:scale")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(4, 4)]
 }
 
 [sub_resource type="Animation" id="Animation_asdw8"]
@@ -285,6 +311,58 @@ tracks/3/keys = {
 "values": [0.0]
 }
 
+[sub_resource type="Animation" id="Animation_1t0ta"]
+resource_name = "campfire_view"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-291, -413), Vector2(-299, -455)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Player/Camera2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.16667, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(26, -18)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Player/Camera2D:zoom")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.16667, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(2, 2), Vector2(3, 3), Vector2(5, 5)]
+}
+
 [sub_resource type="Animation" id="Animation_2y7hd"]
 resource_name = "cut_corners"
 length = 3.5
@@ -402,56 +480,31 @@ tracks/1/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_1t0ta"]
-resource_name = "campfire_view"
-length = 3.0
+[sub_resource type="Animation" id="Animation_d4lhi"]
+resource_name = "meld_square"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Player:position")
+tracks/0/path = NodePath("CanvasLayer/Control/Edges:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.2),
+"times": PackedFloat32Array(0.133333, 0.966667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-291, -413), Vector2(-299, -455)]
+"values": [Vector2(-769, -693), Vector2(-578, -608)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Player:rotation")
+tracks/1/path = NodePath("CanvasLayer/Control/Edges:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0.133333, 0.966667),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Player/Camera2D:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1.16667, 3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, 0), Vector2(26, -18)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Player/Camera2D:zoom")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 1.16667, 3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(2, 2), Vector2(3, 3), Vector2(5, 5)]
+"values": [Vector2(4, 4), Vector2(1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jol3n"]
@@ -461,7 +514,8 @@ _data = {
 "alley_zoom": SubResource("Animation_pne7d"),
 "campfire_view": SubResource("Animation_1t0ta"),
 "cut_corners": SubResource("Animation_2y7hd"),
-"jason_reunite": SubResource("Animation_ac6r4")
+"jason_reunite": SubResource("Animation_ac6r4"),
+"meld_square": SubResource("Animation_d4lhi")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fp0wp"]
@@ -544,11 +598,10 @@ max_distance = 300.0
 script = ExtResource("5_yr2cj")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="Npcs"]
-position = Vector2(308, -487)
+position = Vector2(308, -494)
 collision_layer = 64
 physics_material_override = SubResource("PhysicsMaterial_nscno")
 gravity_scale = 0.0
-lock_rotation = true
 script = ExtResource("7_dn1vr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Npcs/RigidBody2D"]
@@ -568,12 +621,15 @@ process_mode = 4
 [node name="PushableArea" parent="Npcs/RigidBody2D" instance=ExtResource("4_gotx2")]
 
 [node name="Player" parent="." instance=ExtResource("2_wnave")]
-position = Vector2(-291, -413)
+position = Vector2(288, -460)
 collision_mask = 95
 speed = 150
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(2, 2)
+
+[node name="Marker2D" type="Marker2D" parent="Player/Camera2D"]
+position = Vector2(-207, -126)
 
 [node name="firebaroll" parent="." instance=ExtResource("5_cf8ua")]
 position = Vector2(-273, -473)
@@ -618,7 +674,7 @@ disable_player = true
 animation = "abuser_exit"
 trigger_string = "town/abuser_exit_alley"
 
-[node name="TriggerArea" parent="Events" instance=ExtResource("7_vv7q6")]
+[node name="JasonTrigger" parent="Events" instance=ExtResource("7_vv7q6")]
 position = Vector2(-13, -304)
 collision_layer = 1
 collision_mask = 64
@@ -628,8 +684,11 @@ single_trigger = true
 disable_player = true
 animation = "jason_reunite"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Events/TriggerArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Events/JasonTrigger"]
 shape = SubResource("RectangleShape2D_24end")
+
+[node name="Node" type="Node" parent="Events/JasonTrigger"]
+script = ExtResource("12_s27q5")
 
 [node name="TriggerArea2" parent="Events" instance=ExtResource("7_vv7q6")]
 position = Vector2(-297, -437)
@@ -645,10 +704,25 @@ shape = SubResource("RectangleShape2D_kye8t")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 87.0
+offset_top = 46.0
+offset_right = 245.0
+offset_bottom = 107.0
+
+[node name="Edges" parent="CanvasLayer/Control" instance=ExtResource("5_376d0")]
+position = Vector2(62, 41)
+scale = Vector2(4, 4)
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_qv3gg")
 volume_db = -17.801
 autoplay = true
 
+[connection signal="body_entered" from="Events/JasonTrigger" to="Events/JasonTrigger/Node" method="_on_jason_trigger_body_entered"]
+
 [editable path="Npcs/Injured Square"]
 [editable path="Npcs/RigidBody2D/Json"]
+[editable path="CanvasLayer/Control/Edges"]

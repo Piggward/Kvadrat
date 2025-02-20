@@ -314,7 +314,7 @@ polygon = PackedVector2Array(-3, -7, -1.20584, -6.72491, 1.20587, -10.0874, 3.61
 script = ExtResource("8_0sj4u")
 
 [node name="Player" parent="." instance=ExtResource("11_swoev")]
-position = Vector2(584, 176)
+position = Vector2(521, 578)
 speed = 200
 
 [node name="PointLight2D" type="PointLight2D" parent="Player"]

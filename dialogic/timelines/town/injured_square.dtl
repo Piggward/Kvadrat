@@ -1,0 +1,7 @@
+if {Received edges} == false:
+	"Innocent Square": *Sobbing*
+	- Give edges
+		[signal arg="edges_given"]
+else:
+	"Innocent Square": *Sobbing*
+	"Innocent Square": Please just leave me to die...

@@ -21,7 +21,7 @@ func _process(delta):
 	fish.live = true if randi_range(1, 10) > 4 else false
 	fish.minigame_playing = minigame
 	add_child(fish)
-	fish.global_position = Vector2(self.position.x, self.position.y + rheight())
+	fish.position = Vector2(0, rheight())
 	#fish.global_position = Vector2(954, 352)
 	cd = true
 	await get_tree().create_timer(randf_range(min_spawntime, max_spawntime)).timeout

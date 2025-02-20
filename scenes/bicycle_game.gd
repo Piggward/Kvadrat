@@ -67,7 +67,7 @@ func amount_up():
 func transition_to_scene():
 	var x = TRANSITION_AREA.instantiate()
 	x.trigger_asap = true
-	x.file_name = ("res://scenes/bicycle_game.tscn")
+	x.file_name = ("res://scenes/town.tscn")
 	x.position = player.position
 	x.track_position = true
 	x.object = player

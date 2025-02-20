@@ -1,14 +1,9 @@
-"General Jimmy": Take a seat please.
-"General Jimmy": Ahhh, what a splendid day... Forgive me, I fail to disguise my celebratory mood.
-"General Jimmy": I can't say too much, but let's just say that the cities problems are soon... squared.
-"General Jimmy": Nevertheless, back to the matter at hand. Your performance today.
-if {DeadFishesRemoved} > 1:
-	"General Jimmy": I have to commend you Martin Luther Kvadrat. You are one of our most valued workers.
-	"General Jimmy": Just today you have been able to remove {DeadFishesRemoved} dead fishes! That must be some kind of record.
-	"General Jimmy": I reward you, Martin Luther Kvadrat, by letting you leave early today.
-else:
-	"General Jimmy": I have to say that I am not impressed by your performance today Martin Luther Kvadrat.
-	"General Jimmy": Simply put, only removing {DeadFishesRemoved} dead fishes in one day is just embaressing really.
-	"General Jimmy": Go home and rest Martin Luther Kvadrat. Maybe its best that you leave early today.
-"General Jimmy": Perhaps bring some flowers on your way home. Your wife will be surprised to see you home so soon.
-set {HasSpokenWithBoss} = true
+general_jimmy: Take a seat please.
+general_jimmy: Ahhh, what a splendid day... Forgive me, I fail to disguise my celebratory mood.
+general_jimmy: I can't say too much, but let's just say that the cities problems are soon... squared.
+general_jimmy: Nevertheless, back to the matter at hand. Your performance today.
+general_jimmy: I have to say that I am not impressed by your performance today Martin Luther Kvadrat.
+general_jimmy: Simply put, only removing  so few dead fishes in one day is just embaressing really.
+general_jimmy: Go home and rest Martin Luther Kvadrat. Maybe its best that you leave early today.
+general_jimmy: Perhaps bring some flowers on your way home. Your wife will be surprised to see you home so soon.
+set {HasSpokenToBoss} = true

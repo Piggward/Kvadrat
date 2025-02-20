@@ -38,7 +38,10 @@ func trigger():
 	if disable_player:
 		body.process_mode = Node.PROCESS_MODE_DISABLED
 	if preAnimationTimeLine != "":
+		print("start pre")
 		await play_timeline(load("res://dialogic/timelines/" + preAnimationTimeLine + ".dtl"), body)
+		print("end pre")
+		
 	if animation != "":
 		animation_player.play(animation)
 	await animation_player.animation_finished
@@ -49,11 +52,16 @@ func trigger():
 	pass # Replace with function body.
 
 func play_timeline(timeline, body):
+	print("start actual")
 	Dialogic.start(timeline)
 	if disable_player:
 		body.process_mode = Node.PROCESS_MODE_DISABLED
 		await Dialogic.timeline_ended
+		print("end actual")
 		body.process_mode = Node.PROCESS_MODE_INHERIT
+		
+	return true
+	
 		
 func tweenit(object: PhysicsBody2D, new_pos: Vector2, speed: float, property: String):
 	var tween = create_tween().set_parallel(true)

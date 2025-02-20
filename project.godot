@@ -25,8 +25,8 @@ directories/dch_directory={
 "Abusive circle 2": "res://dialogic/characters/Abusive circle 2.dch",
 "Father": "res://dialogic/characters/Father.dch",
 "Guard": "res://dialogic/characters/Guard 1.dch",
+"Innocent Square": "res://dialogic/characters/Unknown.dch",
 "Jason": "res://dialogic/characters/Jason.dch",
-"Unknown": "res://dialogic/characters/Unknown.dch",
 "character": "res://dialogic/characters/character.dch",
 "general_jimmy": "res://dialogic/characters/general_jimmy.dch"
 }
@@ -80,11 +80,16 @@ text/autopauses={}
 layout/style_list=["res://dialogic/style/GJ.tres", "res://dialogic/characters/Guard_style.tres", "res://dialogic/characters/Guard.tres"]
 layout/default_style="res://dialogic/style/GJ.tres"
 variables={
+"HasSpokenToBoss": false,
 "Json_Saved": false,
 "Received edges": false,
-"Talked_to_json": false
+"Talked_to_json": true
 }
 text/autocolor_names=false
+
+[display]
+
+window/stretch/mode="viewport"
 
 [editor_plugins]
 

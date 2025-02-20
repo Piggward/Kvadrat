@@ -30,5 +30,6 @@ func _on_body_entered(body):
 func _on_body_exited(body):
 	if body is Player:
 		player_in_area = false
-		Dialogic.end_timeline()
+		if Dialogic.current_timeline and Dialogic.current_timeline.as_text() == timeLine:
+			Dialogic.end_timeline()
 	pass # Replace with function body.
