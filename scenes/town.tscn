@@ -616,13 +616,15 @@ has_dialogue = true
 dialogue_name = "town/jason"
 
 [node name="StaticBody2D" parent="Npcs/RigidBody2D/Json" index="2"]
-process_mode = 4
+collision_mask = 6
+
+[node name="CollisionShape2D" parent="Npcs/RigidBody2D/Json/StaticBody2D" index="0"]
+debug_color = Color(0.982064, 0, 0.365533, 0.42)
 
 [node name="PushableArea" parent="Npcs/RigidBody2D" instance=ExtResource("4_gotx2")]
 
 [node name="Player" parent="." instance=ExtResource("2_wnave")]
 position = Vector2(288, -460)
-collision_mask = 95
 speed = 150
 
 [node name="Camera2D" type="Camera2D" parent="Player"]

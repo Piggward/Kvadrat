@@ -1,25 +1,126 @@
-[gd_scene load_steps=19 format=3 uid="uid://bgannvtipxti7"]
+[gd_scene load_steps=28 format=3 uid="uid://bgannvtipxti7"]
 
-[ext_resource type="Script" path="res://scripts/bicycle.gd" id="1_alri2"]
 [ext_resource type="Script" path="res://scripts/round_poly.gd" id="1_ihlao"]
 [ext_resource type="Script" path="res://scenes/bicycle_game.gd" id="1_wq730"]
 [ext_resource type="Script" path="res://scenes/bicycle_camera.gd" id="2_0q7b6"]
-[ext_resource type="Script" path="res://scenes/roadmark.gd" id="3_isxm1"]
 [ext_resource type="PackedScene" uid="uid://6lm0vlm52iyn" path="res://scenes/obstacle_spawn.tscn" id="3_k1n7x"]
-[ext_resource type="Script" path="res://scenes/bicycle_railing.gd" id="4_5gyq1"]
+[ext_resource type="Script" path="res://scripts/bicycle_player.gd" id="6_fl5f2"]
 [ext_resource type="Script" path="res://scenes/time_left_label.gd" id="7_78oya"]
 [ext_resource type="PackedScene" uid="uid://cfffnsanp7mqw" path="res://scenes/bicycle.tscn" id="7_hn0nt"]
 [ext_resource type="Texture2D" uid="uid://diy1alic7huw1" path="res://art/white.png" id="9_uesix"]
+[ext_resource type="Script" path="res://scripts/bicycle_lane.gd" id="10_imgqo"]
+[ext_resource type="Script" path="res://scripts/reminder.gd" id="11_pq2w6"]
 [ext_resource type="AudioStream" uid="uid://dmp5dy5lnducn" path="res://sfx/bicycle v2.mp3" id="11_yj82m"]
+
+[sub_resource type="Animation" id="Animation_j1jej"]
+resource_name = "bicyclelane"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(995, 24), Vector2(995, 94)]
+}
+
+[sub_resource type="Animation" id="Animation_ahwv3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(746, 24)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VBoxContainer2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(564.5, -24)]
+}
+
+[sub_resource type="Animation" id="Animation_qpvul"]
+resource_name = "middle_lane"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(564.5, -24), Vector2(564.5, 136)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8vncc"]
+_data = {
+"RESET": SubResource("Animation_ahwv3"),
+"bicyclelane": SubResource("Animation_j1jej"),
+"middle_lane": SubResource("Animation_qpvul")
+}
+
+[sub_resource type="Animation" id="Animation_iwau6"]
+resource_name = "middlelane"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(565, -20), Vector2(564.5, 120)]
+}
+
+[sub_resource type="Animation" id="Animation_4iryf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(564.5, -24)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_muckh"]
+_data = {
+"RESET": SubResource("Animation_4iryf"),
+"middlelane": SubResource("Animation_iwau6")
+}
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ea0ac"]
 bg_color = Color(0.129412, 0.145098, 0.156863, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p0jde"]
 bg_color = Color(0.372549, 0.482353, 0.32549, 1)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g0dx3"]
-size = Vector2(20, 521)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rj4al"]
 
@@ -36,6 +137,42 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Reminder/Panel:theme_override_styles/panel:bg_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.6, 0.6, 0.6, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Reminder/Panel/Label:theme_override_colors/font_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.305882, 0.670588, 0.345098, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Reminder:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_xbg0b"]
@@ -54,41 +191,198 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_gb2ak"]
+resource_name = "player_left_area"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Reminder/Panel:theme_override_styles/panel:bg_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 0), Color(1, 0, 0, 1), Color(1, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Reminder/Panel/Label:theme_override_colors/font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Reminder:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ac0s7"]
 _data = {
 "RESET": SubResource("Animation_0lgmv"),
-"player_hit": SubResource("Animation_xbg0b")
+"player_hit": SubResource("Animation_xbg0b"),
+"player_left_area": SubResource("Animation_gb2ak")
 }
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_clgtx"]
+size = Vector2(87, 740)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_63a5w"]
 
 [node name="BicycleGame" type="Node2D"]
 script = ExtResource("1_wq730")
 distance_to_level = 5000
 distance_to_obstacle = 250
 time = 120.0
-distance_to_finish = 1000.0
+distance_to_finish = 100000.0
 
-[node name="roadmarks" type="Node2D" parent="."]
+[node name="bicycleLane" type="Node2D" parent="."]
+position = Vector2(0, -120)
 
-[node name="Sprite2D" type="Sprite2D" parent="roadmarks"]
-position = Vector2(564, 16)
-rotation = 3.14159
-scale = Vector2(7.83759, -76.172)
+[node name="VBoxContainer" type="VBoxContainer" parent="bicycleLane"]
+offset_left = 746.0
+offset_top = 24.0
+offset_right = 753.0
+offset_bottom = 969.0
+theme_override_constants/separation = 35
+
+[node name="TextureRect" type="TextureRect" parent="bicycleLane/VBoxContainer"]
+custom_minimum_size = Vector2(7, 35)
+layout_mode = 2
 texture = ExtResource("9_uesix")
-script = ExtResource("3_isxm1")
 
-[node name="Sprite2D2" type="Sprite2D" parent="roadmarks"]
-position = Vector2(564, 324)
-rotation = 3.14159
-scale = Vector2(7.83759, -76.172)
+[node name="TextureRect2" type="TextureRect" parent="bicycleLane/VBoxContainer"]
+custom_minimum_size = Vector2(7, 35)
+layout_mode = 2
 texture = ExtResource("9_uesix")
-script = ExtResource("3_isxm1")
 
-[node name="Sprite2D3" type="Sprite2D" parent="roadmarks"]
-position = Vector2(564, 643)
-rotation = 3.14159
-scale = Vector2(7.83759, -76.172)
+[node name="TextureRect3" type="TextureRect" parent="bicycleLane/VBoxContainer"]
+custom_minimum_size = Vector2(7, 35)
+layout_mode = 2
 texture = ExtResource("9_uesix")
-script = ExtResource("3_isxm1")
+
+[node name="TextureRect4" type="TextureRect" parent="bicycleLane/VBoxContainer"]
+custom_minimum_size = Vector2(7, 35)
+layout_mode = 2
+texture = ExtResource("9_uesix")
+
+[node name="TextureRect5" type="TextureRect" parent="bicycleLane/VBoxContainer"]
+custom_minimum_size = Vector2(7, 35)
+layout_mode = 2
+texture = ExtResource("9_uesix")
+
+[node name="TextureRect6" type="TextureRect" parent="bicycleLane/VBoxContainer"]
+custom_minimum_size = Vector2(7, 35)
+layout_mode = 2
+texture = ExtResource("9_uesix")
+
+[node name="TextureRect7" type="TextureRect" parent="bicycleLane/VBoxContainer"]
+custom_minimum_size = Vector2(7, 35)
+layout_mode = 2
+texture = ExtResource("9_uesix")
+
+[node name="TextureRect8" type="TextureRect" parent="bicycleLane/VBoxContainer"]
+custom_minimum_size = Vector2(7, 35)
+layout_mode = 2
+texture = ExtResource("9_uesix")
+
+[node name="TextureRect9" type="TextureRect" parent="bicycleLane/VBoxContainer"]
+custom_minimum_size = Vector2(7, 35)
+layout_mode = 2
+texture = ExtResource("9_uesix")
+
+[node name="TextureRect10" type="TextureRect" parent="bicycleLane/VBoxContainer"]
+custom_minimum_size = Vector2(7, 35)
+layout_mode = 2
+texture = ExtResource("9_uesix")
+
+[node name="TextureRect11" type="TextureRect" parent="bicycleLane/VBoxContainer"]
+custom_minimum_size = Vector2(7, 35)
+layout_mode = 2
+texture = ExtResource("9_uesix")
+
+[node name="TextureRect12" type="TextureRect" parent="bicycleLane/VBoxContainer"]
+custom_minimum_size = Vector2(7, 35)
+layout_mode = 2
+texture = ExtResource("9_uesix")
+
+[node name="TextureRect13" type="TextureRect" parent="bicycleLane/VBoxContainer"]
+custom_minimum_size = Vector2(7, 35)
+layout_mode = 2
+texture = ExtResource("9_uesix")
+
+[node name="TextureRect14" type="TextureRect" parent="bicycleLane/VBoxContainer"]
+custom_minimum_size = Vector2(7, 35)
+layout_mode = 2
+texture = ExtResource("9_uesix")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="bicycleLane"]
+offset_left = 564.5
+offset_top = -24.0
+offset_right = 579.5
+offset_bottom = 946.0
+theme_override_constants/separation = 70
+
+[node name="TextureRect" type="TextureRect" parent="bicycleLane/VBoxContainer2"]
+custom_minimum_size = Vector2(15, 70)
+layout_mode = 2
+texture = ExtResource("9_uesix")
+
+[node name="TextureRect2" type="TextureRect" parent="bicycleLane/VBoxContainer2"]
+custom_minimum_size = Vector2(15, 70)
+layout_mode = 2
+texture = ExtResource("9_uesix")
+
+[node name="TextureRect3" type="TextureRect" parent="bicycleLane/VBoxContainer2"]
+custom_minimum_size = Vector2(15, 70)
+layout_mode = 2
+texture = ExtResource("9_uesix")
+
+[node name="TextureRect4" type="TextureRect" parent="bicycleLane/VBoxContainer2"]
+custom_minimum_size = Vector2(15, 70)
+layout_mode = 2
+texture = ExtResource("9_uesix")
+
+[node name="TextureRect5" type="TextureRect" parent="bicycleLane/VBoxContainer2"]
+custom_minimum_size = Vector2(15, 70)
+layout_mode = 2
+texture = ExtResource("9_uesix")
+
+[node name="TextureRect6" type="TextureRect" parent="bicycleLane/VBoxContainer2"]
+custom_minimum_size = Vector2(15, 70)
+layout_mode = 2
+texture = ExtResource("9_uesix")
+
+[node name="TextureRect7" type="TextureRect" parent="bicycleLane/VBoxContainer2"]
+custom_minimum_size = Vector2(15, 70)
+layout_mode = 2
+texture = ExtResource("9_uesix")
+
+[node name="animation_lane" type="AnimationPlayer" parent="bicycleLane"]
+libraries = {
+"": SubResource("AnimationLibrary_8vncc")
+}
+autoplay = "bicyclelane"
+
+[node name="middle_lane" type="AnimationPlayer" parent="bicycleLane"]
+libraries = {
+"": SubResource("AnimationLibrary_muckh")
+}
+autoplay = "middlelane"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -100,53 +394,26 @@ offset_bottom = 49.0
 script = ExtResource("7_78oya")
 
 [node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
-offset_left = 870.0
-offset_top = 449.0
-offset_right = 1101.0
-offset_bottom = 476.0
+offset_left = 1173.0
+offset_top = 351.0
+offset_right = 1404.0
+offset_bottom = 378.0
 rotation = 4.71239
 theme_override_styles/background = SubResource("StyleBoxFlat_ea0ac")
 theme_override_styles/fill = SubResource("StyleBoxFlat_p0jde")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(570, 383)
+position = Vector2(577, 324)
 script = ExtResource("2_0q7b6")
 
 [node name="ObstacleSpawn" parent="." instance=ExtResource("3_k1n7x")]
 position = Vector2(564, -24)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(570, 385)
-script = ExtResource("4_5gyq1")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-277, -58.5)
-shape = SubResource("RectangleShape2D_g0dx3")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(280, -61)
-shape = SubResource("RectangleShape2D_g0dx3")
-
-[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D"]
-position = Vector2(0, -120)
-color = Color(0.196078, 0.231373, 0.258824, 1)
-polygon = PackedVector2Array(-288, -422, -267, -420, -267, 467, -288, 467)
-
-[node name="Polygon2D2" type="Polygon2D" parent="StaticBody2D"]
-position = Vector2(558, -105)
-color = Color(0.196078, 0.231373, 0.258824, 1)
-polygon = PackedVector2Array(-288, -418, -267, -418, -267, 449, -288, 450)
-
-[node name="End" type="Marker2D" parent="StaticBody2D"]
-position = Vector2(-1, 305)
-
-[node name="Start" type="Marker2D" parent="StaticBody2D"]
-position = Vector2(-5, -623)
-
 [node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(570, 546)
+position = Vector2(1045, 357)
+scale = Vector2(2.41607, 2.41607)
 collision_layer = 2
-script = ExtResource("1_alri2")
+script = ExtResource("6_fl5f2")
 
 [node name="Sprite2D" parent="Player" instance=ExtResource("7_hn0nt")]
 position = Vector2(4, 17)
@@ -169,3 +436,49 @@ libraries = {
 process_mode = 3
 stream = ExtResource("11_yj82m")
 autoplay = true
+
+[node name="BicycleLane" type="Area2D" parent="."]
+position = Vector2(1028, 385)
+collision_mask = 2
+script = ExtResource("10_imgqo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BicycleLane"]
+position = Vector2(17.5, -28)
+shape = SubResource("RectangleShape2D_clgtx")
+
+[node name="Reminder" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 173.0
+offset_right = 1152.0
+offset_bottom = 344.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("11_pq2w6")
+
+[node name="Panel" type="Panel" parent="Reminder"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_63a5w")
+
+[node name="Label" type="Label" parent="Reminder/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.305882, 0.670588, 0.345098, 1)
+theme_override_font_sizes/font_size = 75
+text = "PLEASE STAY IN BICYCLE LANE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="body_entered" from="BicycleLane" to="BicycleLane" method="_on_body_entered"]
+[connection signal="body_exited" from="BicycleLane" to="BicycleLane" method="_on_body_exited"]
